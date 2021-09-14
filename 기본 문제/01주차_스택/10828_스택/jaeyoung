@@ -1,0 +1,49 @@
+import java.util.*
+
+fun main(args: Array<String>) = with(Scanner(System.`in`)){
+    var a = nextInt()
+    var arr = mutableListOf<Int>()
+    for(i in 0..a){
+        var b = nextLine()
+        if(b.contains("push")) arr = push(Integer.parseInt(b.split(" ")[1]),arr)
+        else {
+            when(b){
+                "pop" -> arr = pop(arr)
+                "top" -> top(arr)
+                "size" -> size(arr)
+                "empty" -> empty(arr)
+            }
+        }
+    }
+    
+}
+
+fun push(num : Int,arr:MutableList<Int>) : MutableList<Int>{
+    var ard = arr
+    ard.add(num)
+    return ard
+}
+
+fun pop(arr:MutableList<Int>) : MutableList<Int>{
+    var ard = arr
+    if(ard.size >= 1) {
+        println(ard[ard.size-1])
+        ard.removeAt(ard.size-1)
+    } else println(-1)
+    return ard
+}
+
+
+fun top(arr:MutableList<Int>){
+    if(arr.size>=1) println(arr[arr.size-1])
+    else println(-1)
+}
+
+fun empty(arr:MutableList<Int>){
+    if(arr.size != 0) println(0)
+    else println(1)
+}
+
+fun size(arr:MutableList<Int>){
+    println(arr.size)
+}
